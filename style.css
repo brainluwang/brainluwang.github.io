@@ -18,7 +18,7 @@ Styling for the page header
 --------------------------------*/
 
 .head {
-	background: #184a4a;
+	background: #32184a;
 	color: #fff;
 	padding: 20px 5%;
 	box-shadow: 0 1px 3px #555;
@@ -68,6 +68,10 @@ Styling for the main body of the page
 .main section p {
 	text-align: center;
 	font-size: 1.1em;
+}
+
+.box {
+	border: 1px purple;
 }
 
 /*--------------------------------
