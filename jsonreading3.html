@@ -48,12 +48,12 @@
 	
 		$('<div class="clearfix" id="book"></div>').append('img src="' + data.Image + '" id="pic">'
 			+ '<div id="info">'
-			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>');
-			+ '<p>' + "<b>Subtitle: </b>" + data.volumeInfo.subtitle + '</p>');
-			+ '<p>' + "<b>Authors: </b>" +  data.volumeInfo.authors + '</p>');
-			+ '<p>' + "<b>ID: </b>" +  + data.id + '</p>');
-			+ '<p>' + "<b>Kind: </b>" + data.kind + '</p>');
-			+ '<p>' + "<b>ETAG: </b>" + data.etag + '</p>');
+			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>')
+			+ '<p>' + "<b>Subtitle: </b>" + data.volumeInfo.subtitle + '</p>')
+			+ '<p>' + "<b>Authors: </b>" +  data.volumeInfo.authors + '</p>')
+			+ '<p>' + "<b>ID: </b>" +  + data.id + '</p>')
+			+ '<p>' + "<b>Kind: </b>" + data.kind + '</p>')
+			+ '<p>' + "<b>ETAG: </b>" + data.etag + '</p>')
 			/*$('#book').append('<a class="paragraphs" href="' + data.selfLink+ '">SelfLink</a>');
 			$('#book').append('<p class="paragraphs"> Publisher: ' + data.volumeInfo.publisher + '</p>');
 			$('#book').append('<p class="paragraphs"> Published Date: ' + data.volumeInfo.publisedDate+ '</p>');
