@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<title>Milestone 1 Part 2</title>
+<title>Milestone 1 Part 1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -37,15 +37,15 @@
 </head>
 	
 <body>
-	<div id="header"><h3>Milestone 1 | Part 2</h3></div>
+	<div id="header"><h3>Milestone 1 | Part 1</h3></div>
 	<form>
 		<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" formaction="milestone1.html">Milestone 1 Overview</button>
 	</form>
 	
 	<div id="wrapper"></div>
 <script>
-	$.getJSON("googleapisolo.json", function(data){
-		$('<div class="clearfix" id="book"></div>').append('<img src="' + data.volumeInfo.imageLinks.medium + '" id="pic">' 
+        $.getJSON('googleapisolo.json', function(json){
+            	$('<div class="clearfix" id="book"></div>').append('<img src="' + data.volumeInfo.imageLinks.medium + '" id="pic">' 
 			+ '<div class="clearfix" id="info">' 
 			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>' 
 			+ '<p>' + "<b>Subtitle: </b>"  + data.volumeInfo.subtitle + '</p>' 
@@ -61,8 +61,7 @@
 			+ '<p>' + "<b>Retail Price: </b>$"  + data.saleInfo.retailPrice.amount + '</p>' 
 			+ '<p>' + "<b>Preview: </b>"  + "<a href=" + data.volumeInfo.previewLink + ">http://books.google.com/</a>" + '</p>' 
 			+ '<p>' + "<b>Buy: </b>"  + "<a href=" + data.saleInfo.buyLink + ">http://books.google.com/</a>" + '</p>' 
-			+ '</div>').appendTo("#wrapper");
-	});
+			+ '</div>').appendTo("#wrapper"); 
         
 </script>
 </body>
