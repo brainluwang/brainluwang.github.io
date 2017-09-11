@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<title>Milestone 1 Part 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+	body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+	.w3-bar,h1,button {font-family: "Montserrat", sans-serif}    
+	#book{
+		width: 80%;
+		margin-bottom: 3em;
+		margin: 0 auto;
+		height: 100%;
+	}
+	    
+	#info{
+		float: right;
+		width: 70%;
+		padding: 3em;
+	}
+		
+	#pic{
+		float: left;
+		width: 15%;
+		clear: both;
+		padding: 2em;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+    </style>
+</head>
+	
+<body>
+	<div id="header"><h3>Milestone 1 | Part 2</h3></div>
+	<form>
+		<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" formaction="milestone1.html">Milestone 1 Overview</button>
+	</form>
+	
+	<div id="wrapper"></div>
+<script>
+	$.getJSON("http://it-ebooks-api.info/v1/book/2563063616", function(data){
+
+		$('<div class="clearfix" id="book"></div>').append('<img src="' + data.Image + '" id="pic">' 
+			+ '<div id="info">' 
+			+ '<p>' + "<b>Title: </b>" + data.Title + '</p>' 
+			+ '<p>' + "<b>Subtitle: </b>"  + data.SubTitle + '</p>' 
+			+ '<p>' + "<b>Author: </b>"  + data.Author + '</p>' 
+			+ '<p>' + "<b>Year: </b>"  + data.Year + '</p>' 
+			+ '<p>' + "<b>Page: </b>"  + data.Page + '</p>' 
+			+ '<p>' + "<b>Description: </b>"  + data.Description + '</p>' 
+			+ '<p>' + "<b>Publisher: </b>"  + data.Publisher + '</p>'  
+			+ '<p>' + "<b>ISBN: </b>"  + data.isbn + '</p>' 
+			+ '<p>' + '<a href="' + data.Download + '">Download</a>' + '</p>' 
+			+ '</div>').appendTo("#wrapper");
+
+	});
+        
+</script>
+</body>
+</html>
