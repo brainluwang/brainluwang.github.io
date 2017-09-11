@@ -38,6 +38,7 @@
 	
 <script>
         $.getJSON('https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC', function(data){
+		
             	$('<div class="clearfix" id="book"></div>').append('<img src="' + data.volumeInfo.imageLinks.medium + '" id="pic">' 
 			+ '<div id="info">' 
 			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>' 
