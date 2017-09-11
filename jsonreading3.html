@@ -1,63 +1,114 @@
-<!DOCTYPE HTML>
+<!doctype html>
 
 <html lang="en">
 <head>
-<title>Milestone 1 Part 3</title>
-    <meta charset="UTF-8">
+  <meta charset="utf-8">
+
+    <title>Milestone 1: Part 3</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <style>
-	body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-	.w3-bar,h1,button {font-family: "Montserrat", sans-serif}    
-	#book{
-		width: 80%;
-		margin-bottom: 3em;
-		margin: 0 auto;
-		height: 100%;
-	}
-	    
-	#info{
-		float: right;
-		width: 70%;
-		padding: 3em;
-	}
-		
-	#pic{
-		float: left;
-		width: 15%;
-		clear: both;
-		padding: 2em;
-		border-bottom-style: solid;
-		border-bottom-width: 1px;
-	}
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+        .w3-navbar,h1,button {font-family: "Montserrat", sans-serif}
+        .fa-anchor,.fa-coffee {font-size:200px}
+        
+        .bookpadding{padding-left: 10px;}
+        .title{color:teal; font-size: 30px; line-height: 1%}
+        .subtitle{color:cadetblue; font-size: 20px; border-bottom-style: solid}
+        .image{float: left; margin: 0px 10px 0px 0px}
+        .headers{}
+        .paragraphs{padding-left: 10px; line-height: 110%}
+        .paragraphs2{padding-left: 10px; line-height: 110%; border-bottom-style: solid; font-size: 20px; color: cadetblue;}
     </style>
-</head>
-	
-<body>
-	<div id="header"><h3>Milestone 1 | Part 3</h3></div>
-	<form>
-		<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" formaction="milestone1.html">Milestone 1 Overview</button>
-	</form>
-	
-	<div id="wrapper"></div>
-<script>
-    $.getJSON('https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC', function(data) {
-	
-		$('<div class="clearfix" id="book"></div>').append('<img src="' + data.volumeInfo.imageLinks.thumbnail + '" id="pic">'
-			+ '<div id="info">'
-			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>'
-			+ '<p>' + "<b>Subtitle: </b>" + data.volumeInfo.subtitle + '</p>'
-			+ '<p>' + "<b>Authors: </b>" +  data.volumeInfo.authors + '</p>'
-			+ '<p>' + "<b>ID: </b>" +  + data.id + '</p>'
-			+ '<p>' + "<b>Kind: </b>" + data.kind + '</p>'
-			+ '<p>' + "<b>ETAG: </b>" + data.etag + '</p>'
-			+ '</div>').appendTo("#wrapper");
+
+    <script type = "text/javascript" 
+         src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.2/jquery.min.js"></script>
+      <script type = "text/javascript" language = "javascript">
+     $(document).ready(function() {
+			
+               $.getJSON('https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC', function(jd) {
+
+                   $('#book').html('<p class="title">' + jd.volumeInfo.title + '</p>');
+                   $('#book').append('<p class="subtitle">' + jd.volumeInfo.subtitle + '</p>');
+                   $('#book').append("<img class='image' src=" + jd.volumeInfo.imageLinks.thumbnail + '>');
+                   $('#book').append('<p class="paragraphs">' + jd.volumeInfo.description + '</p>');
+                   $('#book').append('<p class="paragraphs"> Authors: ' + jd.volumeInfo.authors + '</p>');
+                   $('#book').append('<p class="paragraphs2"> Other Information </p>');
+                   $('#book').append('<p class="paragraphs"> ID: ' + jd.id + '</p>');
+                   $('#book').append('<p class="paragraphs"> Kind: ' + jd.kind + '</p>');
+                   $('#book').append('<p class="paragraphs"> Etag: ' + jd.etag + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.selfLink+ '">SelfLink</a>');
+                   $('#book').append('<p class="paragraphs"> Publisher: ' + jd.volumeInfo.publisher + '</p>');
+                   $('#book').append('<p class="paragraphs"> Published Date: ' + jd.volumeInfo.publisedDate+ '</p>');
+                   $('#book').append('<p class="paragraphs"> Industry IdentType: ' + jd.volumeInfo.industryIdentifiers[0].type + '</p>');
+                   $('#book').append('<p class="paragraphs"> Industry Ident: ' + jd.volumeInfo.industryIdentifiers[0].indentifier + '</p>');
+                   $('#book').append('<p class="paragraphs"> Industry IdentType: ' + jd.volumeInfo.industryIdentifiers[1].type + '</p>');
+                   $('#book').append('<p class="paragraphs"> Industry Ident: ' + jd.volumeInfo.industryIdentifiers[1].indentifier + '</p>');
+                   $('#book').append('<p class="paragraphs"> ReadingModeText: ' + jd.volumeInfo.readingModes.text + '</p>');
+                   $('#book').append('<p class="paragraphs"> ReadingModeImage: ' + jd.volumeInfo.readingModes.image + '</p>');
+                   $('#book').append('<p class="paragraphs"> PageCount: ' + jd.volumeInfo.pageCount + '</p>');
+                   $('#book').append('<p class="paragraphs"> PrintedPageCount: ' + jd.volumeInfo.printedPageCount + '</p>');
+                   $('#book').append('<p class="paragraphs"> DimensionsHeight: ' + jd.volumeInfo.dimensions.height + '</p>');
+                   $('#book').append('<p class="paragraphs"> DimensionsWidth: ' + jd.volumeInfo.dimensions.width + '</p>');
+                   $('#book').append('<p class="paragraphs"> DimensionsThick: ' + jd.volumeInfo.dimensions.thickness + '</p>');
+                   $('#book').append('<p class="paragraphs"> PrintType: ' + jd.volumeInfo.printType + '</p>');
+                   $('#book').append('<p class="paragraphs"> DimensionsHeight: ' + jd.volumeInfo.categories + '</p>');
+                   $('#book').append('<p class="paragraphs"> AverageRating: ' + jd.volumeInfo.averageRating + '</p>');
+                   $('#book').append('<p class="paragraphs"> RatingCount: ' + jd.volumeInfo.ratingsCount + '</p>');
+                   $('#book').append('<p class="paragraphs"> MaturityRating: ' + jd.volumeInfo.maturityRating + '</p>');
+                   $('#book').append('<p class="paragraphs"> AllowAnonLogging: ' + jd.volumeInfo.allowAnonLogging + '</p>');
+                   $('#book').append('<p class="paragraphs"> ContentVersion: ' + jd.volumeInfo.contentVersion + '</p>');
+                   $('#book').append('<p class="paragraphs"> DimensionsHeight: ' + jd.volumeInfo.dimensions.height + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.imageLinks.smallThumbnail+ '">SmallThumbNail</a>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.imageLinks.small+ '">SmallImage</a>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.imageLinks.medium+ '">MediumImage</a>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.imageLinks.large+ '">LargeImage</a>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.imageLinks.extraLarge+ '">SmallThumbNail</a>');
+                   $('#book').append('<p class="paragraphs"> Language ' + jd.volumeInfo.language + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.previewLink+ '">PreviewLink</a>');
+                   $('#book').append('<p class="paragraphs"> InfoLink ' + jd.volumeInfo.infoLink + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.infoLink+ '">InfoLink</a>');
+                   $('#book').append('<p class="paragraphs"> CanonicalVolLink ' + jd.volumeInfo.canonicalVolumeLink + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.volumeInfo.canonicalVolumeLink+ '">CanonicalVolumeLink</a>');
+                   $('#book').append('<p class="paragraphs"> LayerID ' + jd.layerInfo.layers.layerId + '</p>');
+                   $('#book').append('<p class="paragraphs"> VolumeAnnotationVer ' + jd.layerInfo.layers.volumeAnnotationsVersion + '</p>');
+                   $('#book').append('<p class="paragraphs"> saleInfoCountry ' + jd.saleInfo.country + '</p>');
+                   $('#book').append('<p class="paragraphs"> Saleability ' + jd.saleInfo.saleability + '</p>');
+                   $('#book').append('<p class="paragraphs"> IsEbook ' + jd.saleInfo.isEbook + '</p>');
+                   $('#book').append('<p class="paragraphs"> ListPriceAmount ' + jd.saleInfo.listPrice.amount + '</p>');
+                   $('#book').append('<p class="paragraphs"> ListPriceCC ' + jd.saleInfo.listPrice.currencyCode + '</p>');
+                   $('#book').append('<p class="paragraphs"> RetailPriceAmount ' + jd.saleInfo.retailPrice.amount + '</p>');
+                   $('#book').append('<p class="paragraphs"> RetailPriceCC ' + jd.saleInfo.retailPrice.currencyCode + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.saleInfo.buyLink + '">WebReaderLink</a>');
+                   $('#book').append('<p class="paragraphs"> FinskyOfferType ' + jd.saleInfo.offers.finskyOfferType + '</p>');
+                   $('#book').append('<p class="paragraphs"> Giftable ' + jd.saleInfo.offers.giftable + '</p>');
+                   $('#book').append('<p class="paragraphs"> AcessInfoCountry ' + jd.accessInfo.country + '</p>');
+                   $('#book').append('<p class="paragraphs"> Viewability ' + jd.accessInfo.viewability + '</p>');
+                   $('#book').append('<p class="paragraphs"> Embeddable ' + jd.accessInfo.embeddable + '</p>');
+                   $('#book').append('<p class="paragraphs"> Public Domain ' + jd.accessInfo.publicDomain + '</p>');
+                   $('#book').append('<p class="paragraphs"> Text to Speech ' + jd.accessInfo.textToSpeechPermission + '</p>');
+                   $('#book').append('<p class="paragraphs"> EBUP: ' + jd.accessInfo.epub.isAvailable + '</p>');
+                   $('#book').append('<p class="paragraphs"> PDF: ' + jd.accessInfo.pdf.isAvailable + '</p>');
+                   $('#book').append('<a class="paragraphs" href="' + jd.accessInfo.webReaderLink + '">WebReaderLink</a>');
+                   $('#book').append('<p class="paragraphs"> Access View Status ' + jd.accessInfo.accessViewStatus + '</p>');
+                   $('#book').append('<p class="paragraphs"> Quote Sharing Allowed: ' + jd.accessInfo.quoteSharingAllowed + '</p>');
+
+               });
 				
          });
-        
-</script>
+      
+  </script>
+    
+</head>
+
+<body>
+    <h1>Milestone 1: Part 3</h1>
+		<a class="paragraphs" href="milestone1.html">Back to Milestone 1 List</a>
+      <div id = "book"></div>
 </body>
+
 </html>
