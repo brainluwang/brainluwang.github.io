@@ -23,20 +23,20 @@
 </head>
 <body>
 	
-<h2>Milestone 1 Part 1</h2>
+<h2>Milestone 1 Part 1..</h2>
 	<a class="paragraphs" href="milestone1.html">Back to Milestone 1 List</a>	
     <div id = "Book" class="bookpadding"></div>	
 	
 <script>
      $(function){
 			
-               $.getJSON("http://it-ebooks-api.info/v1/search/modern%20web", function(jd) {
+               $.getJSON("modernweb.json", function (json) {
 
                    var bookHTML=""; 
                    
-                    for (i in jd.Books)
+                    for (i in json.Books)
                         {
-                              bookHTML+='<br>' + '<p class="title">' + jd.Books[i].Title + '</p>' + '<p class="subtitle">' + jd.Books[i].SubTitle + '</p>' + '<p class="paragraphs"> ID: ' + jd.Books[i].ID + '</p>' +  "<img class='image' src=" + jd.Books[i].Image + '>' + '<p class="paragraphs"> Desciption: ' + jd.Books[i].Description + '</p>';
+                              bookHTML+='<br>' + '<p class="title">' + json.Books[i].Title + '</p>' + '<p class="subtitle">' + json.Books[i].SubTitle + '</p>' + '<p class="paragraphs"> ID: ' + json.Books[i].ID + '</p>' +  "<img class='image' src=" + json.Books[i].Image + '>' + '<p class="paragraphs"> Desciption: ' + json.Books[i].Description + '</p>';
 
                         }
                     $('#Book').html(bookHTML);
