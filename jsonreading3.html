@@ -48,12 +48,12 @@
 	
 		$('<div class="clearfix" id="book"></div>').append('img src="' + data.imageLinks.thumbnail + '" id="pic">'
 			+ '<div id="info">'
-			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>')
-			+ '<p>' + "<b>Subtitle: </b>" + data.volumeInfo.subtitle + '</p>')
-			+ '<p>' + "<b>Authors: </b>" +  data.volumeInfo.authors + '</p>')
-			+ '<p>' + "<b>ID: </b>" +  + data.id + '</p>')
-			+ '<p>' + "<b>Kind: </b>" + data.kind + '</p>')
-			+ '<p>' + "<b>ETAG: </b>" + data.etag + '</p>')
+			+ '<p>' + "<b>Title: </b>" + data.volumeInfo.title + '</p>'
+			+ '<p>' + "<b>Subtitle: </b>" + data.volumeInfo.subtitle + '</p>'
+			+ '<p>' + "<b>Authors: </b>" +  data.volumeInfo.authors + '</p>'
+			+ '<p>' + "<b>ID: </b>" +  + data.id + '</p>'
+			+ '<p>' + "<b>Kind: </b>" + data.kind + '</p>'
+			+ '<p>' + "<b>ETAG: </b>" + data.etag + '</p>'
 			+ ('</div>').appendTo("#wrapper");
 				
          });
