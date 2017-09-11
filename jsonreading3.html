@@ -27,8 +27,7 @@
     </style>
 
 <script>
-     $(document).ready(function() {
-			
+		
                $.getJSON('googleapisolo.json', function(jd) {
 
                    $('#book').html('<p class="title">' + jd.volumeInfo.title + '</p>');
