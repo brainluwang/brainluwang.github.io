@@ -42,7 +42,7 @@
 	<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" formaction="milestone1.html">Milestone 1 Overview</button>
 </form>
 	
-<div id="books"></div>
+<div id="box"></div>
 <script>
  $(function(){
         $.getJSON('modernweb.json', function(json){
@@ -56,7 +56,7 @@
             			+ '<p>' + "<b>Description: </b>"  + this.Description + '</p>' 
             			+ '<p>' + "<b>ID: </b>"  + this.ID + '</p>' 
             			+ '<p>' + "<b>ISBN: </b>"  + this.isbn + '</p>' 
-            			+ '</div>').appendTo("#books");
+            			+ '</div>').appendTo("#box");
 
             	});
 
