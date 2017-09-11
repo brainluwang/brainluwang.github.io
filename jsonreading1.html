@@ -23,25 +23,27 @@
 </head>
 <body>
 	
-<h2>Milestone 1 Part 1</h2>
+<h2>Milestone 1 Part 1.....</h2>
 	<a class="paragraphs" href="milestone1.html">Back to Milestone 1 List</a>	
     <div id = "Book" class="bookpadding"></div>	
 	
 <script>
-     $(document).ready(function() {
-			
-               $.getJSON("https://it-ebooks-api.info/v1/search/modern%20web", function(jd) {
+        $.getJSON("http://it-ebooks-api.info/v1/search/modern%20web", function(json){
 
-                   var bookHTML=""; 
-                   
-                    for (i in jd.Books)
-                        {
-                              bookHTML+='<br>' + '<p class="title">' + jd.Books[i].Title + '</p>' + '<p class="subtitle">' + jd.Books[i].SubTitle + '</p>' + '<p class="paragraphs"> ID: ' + jd.Books[i].ID + '</p>' +  "<img class='image' src=" + jd.Books[i].Image + '>' + '<p class="paragraphs"> Desciption: ' + jd.Books[i].Description + '</p>';
+            	$.each(json.Books, function(){
 
-                        }
-                    $('#Book').html(bookHTML);
-                 }); 
-            });
+            		$('<div class="clearfix" id="book"></div>').append('<img src="' + this.Image + '" id="pic">' 
+            			+ '<div id="info">' 
+            			+ '<p>' + "<b>Title: </b>" + this.Title + '</p>' 
+            			+ '<p>' + "<b>Subtitle: </b>"  + this.SubTitle + '</p>' 
+            			+ '<p>' + "<b>Description: </b>"  + this.Description + '</p>' 
+            			+ '<p>' + "<b>ID: </b>"  + this.ID + '</p>' 
+            			+ '<p>' + "<b>ISBN: </b>"  + this.isbn + '</p>' 
+            			+ '</div>').appendTo("#wrapper");
+
+            	});
+
+        }); 
       
 </script>
         
