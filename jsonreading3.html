@@ -21,7 +21,7 @@
 
 <script>
 		
-               $.getJSON('googleapisolo.json', function(jd) {
+               $.getJSON("googleapisolo.json", function(jd) {
 
                    $('#book').html('<p class="title">' + jd.volumeInfo.title + '</p>');
                    $('#book').append('<p class="subtitle">' + jd.volumeInfo.subtitle + '</p>');
