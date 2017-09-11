@@ -23,13 +23,7 @@
 		border-bottom-width: 1px;
 	}
 	    
-	#info{
-		float: right;
-		width: 60%;
-		padding: 1em;
-	}
-	    
-	#pic{
+	#picture{
 		float: left;
 		width: 20%;
 		clear: both;
@@ -50,7 +44,7 @@
 
             	$.each(json.Books, function(){
 
-            		$('<div class="clearfix" id="book"></div>').append('<img src="' + this.Image + '" id="pic">' 
+            		$('<div class="clearfix" id="book"></div>').append('<img src="' + this.Image + '" id="picture">' 
             			+ '<div id="info">' 
             			+ '<p>' + "<b>Title: </b>" + this.Title + '</p>' 
             			+ '<p>' + "<b>Subtitle: </b>"  + this.SubTitle + '</p>' 
