@@ -48,24 +48,24 @@
   	<script>
         $.getJSON("https://www.googleapis.com/books/v1/volumes?q=modern%20web", function(data){
         
-$.each(data.items, function(){
+		$.each(data.items, function(){
   
-$('<div class="clearfix" id="book"></div>').append('<img src="' + this.volumeInfo.imageLinks.thumbnail + '" id="pic">' 
-+ '<div class="clearfix" id="info">' + '<p>' + 
-"<b>Title: </b>" + this.volumeInfo.title + '</p>' + '<p>' + 
-"<b>Subtitle: </b>" + this.volumeInfo.subtitle + '</p>' + '<p>' + 
-"<b>Author: </b>"  + this.volumeInfo.authors + '</p>'+ '<p>' + 
-"<b>Publisher: </b>"  + this.volumeInfo.publisher + '</p>' + '<p>' + 
-"<b>Date Published: </b>" + this.volumeInfo.publishedDate + '</p>' + '<p>' + 
-"<b>Page Count: </b>"  + this.volumeInfo.pageCount + '</p>' + '<p>' + 
-"<b>Description: </b>"  + this.volumeInfo.description + '</p>' + '<p>' + 
-"<b>Average Rating: </b>"  + this.volumeInfo.averageRating + '</p>' + '<p>' + 
-"<b>Rating Count: </b>"  + this.volumeInfo.ratingsCount + '</p>' + '<p>' + 
-"<b>Language: </b>"  + this.volumeInfo.language + '</p>' + '<p>' + 
-"<b>Preview: </b>"  + "<a href=" + this.volumeInfo.previewLink + ">http://books.google.com/</a>" + '</p>' + '<p>' + 
-'</div>').appendTo("#wrapper");
-            });
-        });
+		$('<div class="clearfix" id="book"></div>').append('<img src="' + this.volumeInfo.imageLinks.thumbnail + '" id="pic">' 
+		+ '<div class="clearfix" id="info">' + '<p>' + 
+		"<b>Title: </b>" + this.volumeInfo.title + '</p>' + '<p>' + 
+		"<b>Subtitle: </b>" + this.volumeInfo.subtitle + '</p>' + '<p>' + 
+		"<b>Author: </b>"  + this.volumeInfo.authors + '</p>'+ '<p>' + 
+		"<b>Publisher: </b>"  + this.volumeInfo.publisher + '</p>' + '<p>' + 
+		"<b>Date Published: </b>" + this.volumeInfo.publishedDate + '</p>' + '<p>' + 
+		"<b>Page Count: </b>"  + this.volumeInfo.pageCount + '</p>' + '<p>' + 
+		"<b>Description: </b>"  + this.volumeInfo.description + '</p>' + '<p>' + 
+		"<b>Average Rating: </b>"  + this.volumeInfo.averageRating + '</p>' + '<p>' + 
+		"<b>Rating Count: </b>"  + this.volumeInfo.ratingsCount + '</p>' + '<p>' + 
+		"<b>Language: </b>"  + this.volumeInfo.language + '</p>' + '<p>' + 
+		"<b>Preview: </b>"  + "<a href=" + this.volumeInfo.previewLink + ">http://books.google.com/</a>" + '</p>' + '<p>' + 
+		'</div>').appendTo("#wrapper");
+		});
+    	});
   </script>
 
 </body>
