@@ -49,11 +49,11 @@
   
 <script>
     $(function(){
-			var id = window.location.search.split('id=')[1];
+      var id = window.location.search.split('id=')[1];
       var service_point="https://www.googleapis.com/books/v1/volumes/"+id;
 
       $.getJSON(service_point, function (json) {
-				console.log(json);
+	console.log(json);
   			var booksHTML="";
                         
                         var description=json.volumeInfo.description;
@@ -84,3 +84,22 @@
 		});
     });
 </script>
+	
+<body>
+  <div id="wrapper">
+      <h1 id="L">Book Info </h1></div>
+  <div id="results">
+    <div id="title"></div> <br>
+    	<a id="webpage"></a></p> <br>
+	    <div id="info">
+    <img id="cover" /> <br><br>
+    <div id="author"></div> <br>
+    <div id="publisher"></div> <br>
+    <div id="pages"></div> <br>
+    <div id="identifier10"></div>
+    <div id="identifier13"></div> <br>
+	<p class="large">Categories:</p>
+        <div id="category"></div> <br><br>              
+   </div>
+</body>
+</html>
