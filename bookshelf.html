@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Google Bookshelf</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="wrapper">
+      <h1>Brian's Bookshelf</h1>
+  </div>
+  
+<form>
+  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" formaction="milestone2.html">Back to Milestone 2 Overview</button>
+</form>
+<br>
+
+<div id="results" style="display: flex; flex-wrap: wrap;"></div>
+
+<script>
+    $(function(){
+        var json = {
+ "kind": "books#bookshelf",
+ "id": 1001,
+ "selfLink": "https://www.googleapis.com/books/v1/users/117950082300354916875/bookshelves/",
+ "title": "Brian's Bookshelf",
+ "description": "Advanced Web Development Course",
+ "access": "PUBLIC",
+ "updated": "2017-09-29T20:52:32.731Z",
+ "created": "2017-09-29T20:52:32.731Z",
+ "volumeCount": 4,
+ "volumesLastUpdated": "2017-09-29T20:52:32.730Z"
+}
+;    
+        var json2 = {
+ "kind": "books#volumes",
+ "totalItems": 4,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "9hEmDQAAQBAJ",
+   "etag": "swp8kDIwpZ8",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/9hEmDQAAQBAJ",
+ "volumeInfo": {
+  "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 1 (light novel)",
+  "subtitle": "Oh! My Useless Goddess!",
+  "authors": [
+   "Natsume Akatsuki"
+  ],
+  "publisher": "Yen Press",
+  "publishedDate": "2017-02-21",
+  "description": "Game loving shut-in Kazuma Sato's life as a young schoolboy in Japan abruptly comes to an early end...or at least it was supposed to. When he opens his eyes, though, he sees a beautiful goddess that offers him a once in an after-lifetime chance to be reborn in a parallel world. The catch is that the world is violent and threatened by a growing evil! Fortunately, he can choose any one thing to bring with him. So he chooses the goddess, Aqua! And so his adventure with his gorgeous companion begins--if he could just get enough money and food to survive, keep his goddess out of trouble, and avoid grabbing the attention of the Demon King's army!",
+  "industryIdentifiers": [
+   {
+    "type": "ISBN_10",
+    "identifier": "031646872X"
+   },
+   {
+    "type": "ISBN_13",
+    "identifier": "9780316468725"
+   }
+  ],
+  "readingModes": {
+   "text": true,
+   "image": false
+  },
+  "pageCount": 176,
+  "printedPageCount": 160,
+  "printType": "BOOK",
+  "categories": [
+   "Fiction / Fantasy / General"
+  ],
+  "averageRating": 4.0,
+  "ratingsCount": 1,
+  "maturityRating": "NOT_MATURE",
+  "allowAnonLogging": true,
+  "contentVersion": "1.5.5.0.preview.2",
+  "panelizationSummary": {
+   "containsEpubBubbles": false,
+   "containsImageBubbles": false
+  },
+  "imageLinks": {
+   "smallThumbnail": "http://books.google.com/books/content?id=9hEmDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE714V697SdzmdC_116AC4lq1tju6YmFmdXYl0wbrPiqQ5bABNF7uADLD8LNleD4bh47226IS5GUyJXzZp9rCiClkOJpPdgjDbWKXHWWVZOH6FkgOqb9q8LzkmhFkMc26ZQaLbOHJ&source=gbs_api",
+   "thumbnail": "http://books.google.com/books/content?id=9hEmDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71cy4npPOdh5Jk9qG4lnaj3bc5eFpiGcaMz9WjzlYwjA1j_NMuM5QRVK62q6cJo_srTyBDT4Doxt9kVtpLbiHpxwIvsYQEr5teKf7f5I04tPW9WDWPSzz3m-5rUG0sHNrr0oefn&source=gbs_api",
+   "small": "http://books.google.com/books/content?id=9hEmDQAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE70i5qdEvfVUyOF8oZXN7sM_sgOElRuV8aC0bBLBiOGTd4vQ3EejzUGd8rV3UqioIr48qxDr-A65nehs3zb1Fh6YQxNDIcB4-hf7fN6xgEYx2fkKUs8O1goEC1-g2rmvPkLmlY2w&source=gbs_api",
+   "medium": "http://books.google.com/books/content?id=9hEmDQAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71jRECqjVwaQqytFzyJFH3jRk6JbhhTJWcivaOJ2y41plHLkrt6KF-aUl8n177KKDLjUkSfZot7vMBVEY3RKgnZqeYVFOgY3tRdIwy7LzTiBBLKyrh_4Ra9G3UxECj3XbFc4F06&source=gbs_api",
+   "large": "http://books.google.com/books/content?id=9hEmDQAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE73lPxFRCtbmI2mRsnCivi9KJBLlKbVCxcftTjlKioIZo_gCdudJcxfcsTRHQH1n-gpwdXDiVSOmmyeabo4uKjFt6PBy3MKHh9irRQxKMOwwYDCCAhT-jg7mYpc2_ewYCXrd70_9&source=gbs_api",
+   "extraLarge": "http://books.google.com/books/content?id=9hEmDQAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE73gJ8e2fGW9QxBzxPCk3HQyjDuhlTb67cybMdQCb-LZ9v-2Hr1v3LjCBsBnjOtM3nmoJ3ldrbARaCIzTaJDScYrLRRqd8JYWMhbWP1PrbRqxm0MBeLxBvHOyPT7Aoaqu8g4PZHg&source=gbs_api"
+  },
+  "language": "en",
+  "previewLink": "http://books.google.com/books?id=9hEmDQAAQBAJ&hl=&source=gbs_api",
+  "infoLink": "https://play.google.com/store/books/details?id=9hEmDQAAQBAJ&source=gbs_api",
+  "canonicalVolumeLink": "https://market.android.com/details?id=book-9hEmDQAAQBAJ"
+ },
+ "layerInfo": {
+  "layers": [
+   {
+    "layerId": "geo",
+    "volumeAnnotationsVersion": "6"
+   }
+  ]
+ },
+ "saleInfo": {
+  "country": "US",
+  "saleability": "FOR_SALE",
+  "isEbook": true,
+  "listPrice": {
+   "amount": 7.99,
+   "currencyCode": "USD"
+  },
+  "retailPrice": {
+   "amount": 7.99,
+   "currencyCode": "USD"
+  },
+  "buyLink": "https://play.google.com/store/books/details?id=9hEmDQAAQBAJ&rdid=book-9hEmDQAAQBAJ&rdot=1&source=gbs_api",
+  "offers": [
+   {
+    "finskyOfferType": 1,
+    "listPrice": {
+     "amountInMicros": 7990000.0,
+     "currencyCode": "USD"
+    },
+    "retailPrice": {
+     "amountInMicros": 7990000.0,
+     "currencyCode": "USD"
+    },
+    "giftable": true
+   }
+  ]
+ },
+ "accessInfo": {
+  "country": "US",
+  "viewability": "PARTIAL",
+  "embeddable": true,
+  "publicDomain": false,
+  "textToSpeechPermission": "ALLOWED",
+  "epub": {
+   "isAvailable": true,
+   "acsTokenLink": "http://books.google.com/books/download/Konosuba_God_s_Blessing_on_This_Wonderfu-sample-epub.acsm?id=9hEmDQAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+  },
+  "pdf": {
+   "isAvailable": false
+  },
+  "webReaderLink": "http://play.google.com/books/reader?id=9hEmDQAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+  "accessViewStatus": "SAMPLE",
+  "quoteSharingAllowed": false
+ }
+},
+  {
+ "kind": "books#volume",
+ "id": "kP9oDQAAQBAJ",
+ "etag": "Suz6Oz8BCiE",
+ "selfLink": "https://www.googleapis.com/books/v1/volumes/kP9oDQAAQBAJ",
+ "volumeInfo": {
+  "title": "Death March to the Parallel World Rhapsody, Vol. 1 (light novel)",
+  "authors": [
+   "Hiro Ainana"
+  ],
+  "publisher": "Yen Press",
+  "publishedDate": "2017-01-31",
+  "description": "\u003cbr\u003eProgrammer Ichirou Suzuki is transported to another world. In a foreign land, he finds that life is an adventure that's sometimes fun, sometimes serious, and full of girls!\u003cbr\u003e",
+  "industryIdentifiers": [
+   {
+    "type": "ISBN_10",
+    "identifier": "0316556130"
+   },
+   {
+    "type": "ISBN_13",
+    "identifier": "9780316556132"
+   }
+  ],
+  "readingModes": {
+   "text": true,
+   "image": false
+  },
+  "pageCount": 208,
+  "printedPageCount": 210,
+  "printType": "BOOK",
+  "categories": [
+   "Fiction / Fantasy / General"
+  ],
+  "maturityRating": "NOT_MATURE",
+  "allowAnonLogging": true,
+  "contentVersion": "1.4.3.0.preview.2",
+  "panelizationSummary": {
+   "containsEpubBubbles": false,
+   "containsImageBubbles": false
+  },
+  "imageLinks": {
+   "smallThumbnail": "http://books.google.com/books/content?id=kP9oDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE73IEoumDuGVyAhAQVoFrDqWlfsV2KYXquoKpZ91iTTT-6cXh9JbLhk6LQAYIfakEsybNKaZnwgOr2e6VPf7E8VrTE7rPjmwms4ASXhkZpXa9EV7AgiNPmmjvwAKhEAxJHKAFWuX&source=gbs_api",
+   "thumbnail": "http://books.google.com/books/content?id=kP9oDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73JczUIchXvfD8m_pxRYQ1wH-baQDL1vExuWPkJUg6YxYn_aKkebH4C0w6zISeu1pLqLqddhaip24XESbxYEivW98aSuMT8j5-P4j6i2rqarpyaHA6Huc-gGxXpe1xRebegh1Jc&source=gbs_api",
+   "small": "http://books.google.com/books/content?id=kP9oDQAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE738F2sq3dVE3nnpOi0c32wM3CPSs3iQq4cUUruZhz7WQWcFKXFxxkBBi2I1aE6D3YRcZw0fge3BBB-NPfT3OhMdyG74kk9htVO-TXP12ByJaatCGmjmU7unBaxgk3kwzJLKejF6&source=gbs_api",
+   "medium": "http://books.google.com/books/content?id=kP9oDQAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE70dJ9orPtb3LnboDTB8O4InABzlJkNIL6wl4cpcVuzw3OaA91cHhcuroHQ8zQ6MUe7uK8-4iZz2nt4VKlYkQplfY6BZwbFid0Xhu-4zSDA7xFnmn3CqX8hQEjmHFq5d_DjDYP8L&source=gbs_api",
+   "large": "http://books.google.com/books/content?id=kP9oDQAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE736Djh25iyGKGNZq0f7NPuTNnhzn2zANsEz9clGFoHrfRcOUJprQp6QjUVbZsFePYl9Udj23sHI25SeEavlBNIGMFE6ujw7UQruBv9EaWovcBaw60eDMtewR6UPHFf2tWdc2MgA&source=gbs_api",
+   "extraLarge": "http://books.google.com/books/content?id=kP9oDQAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE73lAkUfhmzPk6MOseID170grkUzmZ0j86gcTB4tJP_iE2VIC1sEcKetkqXLHX6Gc99efKQOIb6Qw5mQQ-YWLvu4yjNQmC5CNDkR6HrcX5AQGBagSn2BsvhDb1f-szSaHKoa9eFp&source=gbs_api"
+  },
+  "language": "en",
+  "previewLink": "http://books.google.com/books?id=kP9oDQAAQBAJ&hl=&source=gbs_api",
+  "infoLink": "https://play.google.com/store/books/details?id=kP9oDQAAQBAJ&source=gbs_api",
+  "canonicalVolumeLink": "https://market.android.com/details?id=book-kP9oDQAAQBAJ"
+ },
+ "layerInfo": {
+  "layers": [
+   {
+    "layerId": "geo",
+    "volumeAnnotationsVersion": "4"
+   }
+  ]
+ },
+ "saleInfo": {
+  "country": "US",
+  "saleability": "FOR_SALE",
+  "isEbook": true,
+  "listPrice": {
+   "amount": 7.99,
+   "currencyCode": "USD"
+  },
+  "retailPrice": {
+   "amount": 7.99,
+   "currencyCode": "USD"
+  },
+  "buyLink": "https://play.google.com/store/books/details?id=kP9oDQAAQBAJ&rdid=book-kP9oDQAAQBAJ&rdot=1&source=gbs_api",
+  "offers": [
+   {
+    "finskyOfferType": 1,
+    "listPrice": {
+     "amountInMicros": 7990000.0,
+     "currencyCode": "USD"
+    },
+    "retailPrice": {
+     "amountInMicros": 7990000.0,
+     "currencyCode": "USD"
+    },
+    "giftable": true
+   }
+  ]
+ },
+ "accessInfo": {
+  "country": "US",
+  "viewability": "PARTIAL",
+  "embeddable": true,
+  "publicDomain": false,
+  "textToSpeechPermission": "ALLOWED",
+  "epub": {
+   "isAvailable": true,
+   "acsTokenLink": "http://books.google.com/books/download/Death_March_to_the_Parallel_World_Rhapso-sample-epub.acsm?id=kP9oDQAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+  },
+  "pdf": {
+   "isAvailable": false
+  },
+  "webReaderLink": "http://play.google.com/books/reader?id=kP9oDQAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+  "accessViewStatus": "SAMPLE",
+  "quoteSharingAllowed": false
+ }
+},
+  {
+ "kind": "books#volume",
+ "id": "FLEHngEACAAJ",
+ "etag": "d5V3pcRW7Nk",
+ "selfLink": "https://www.googleapis.com/books/v1/volumes/FLEHngEACAAJ",
+ "volumeInfo": {
+  "title": "Sword Art Online 1: Aincrad (light novel)",
+  "authors": [
+   "Reki Kawahara"
+  ],
+  "publisher": "Yen Press",
+  "publishedDate": "2014-04-22",
+  "description": "Read the novel that ignited the phenomenon!\u003cbr\u003eIn the year 2022, gamers rejoice as Sword Art Online - a VRMMORPG (Virtual Reality Massively Multiplayer Online Role Playing Game) like no other - debuts, allowing players to take full advantage of the ultimate in gaming technology: NerveGear, a system that allows users to completely immerse themselves in a wholly realistic gaming experience. But when the game goes live, the elation of the players quickly turns to horror as they discover that, for all its amazing features, SAO is missing one of the most basic functions of any MMORPG - a log-out button. Now trapped in the virtual world of Aincrad, their bodies held captive by NerveGear in the real world, users are issued a chilling ultimatum: conquer all one hundred floors of Aincrad to regain your freedom. But in the warped world of SAO, \"game over\" means certain death - both virtual and real... \u003cbr\u003e",
+  "industryIdentifiers": [
+   {
+    "type": "ISBN_10",
+    "identifier": "0316371246"
+   },
+   {
+    "type": "ISBN_13",
+    "identifier": "9780316371247"
+   }
+  ],
+  "readingModes": {
+   "text": false,
+   "image": false
+  },
+  "pageCount": 256,
+  "printedPageCount": 256,
+  "dimensions": {
+   "height": "21.00 cm",
+   "width": "14.00 cm",
+   "thickness": "1.90 cm"
+  },
+  "printType": "BOOK",
+  "categories": [
+   "Fiction / Science Fiction / Action & Adventure"
+  ],
+  "averageRating": 4.5,
+  "ratingsCount": 2,
+  "maturityRating": "NOT_MATURE",
+  "allowAnonLogging": false,
+  "contentVersion": "preview-1.0.0",
+  "imageLinks": {
+   "smallThumbnail": "http://books.google.com/books/content?id=FLEHngEACAAJ&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE73yjIJD3MwH9O3w0TZnGQv9AMJceeeM0MTZtLbVRE2i16Vk919zd55XL6_hSfKjaFix4SdNamwqrZ_M69nFzsvrNz_lvk7R87qUmGbIRKD-XKqTYf_ouYi2WCYqR5_sNZ6EqWFk&source=gbs_api",
+   "thumbnail": "http://books.google.com/books/content?id=FLEHngEACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-3_eIP9K7EkpiP_tQMlFXT8LHZPWiWQiAOCaAQXhjnVKeFZi2FQaXoDBoSQ1KDtajL9GFU4i_LNFY01vTISMrApgK29H_dqT2nCqMammelCkOH3zHg8JDtjnRqK2QRWjAiKbJ&source=gbs_api"
+  },
+  "language": "en",
+  "previewLink": "http://books.google.com/books?id=FLEHngEACAAJ&hl=&source=gbs_api",
+  "infoLink": "https://play.google.com/store/books/details?id=FLEHngEACAAJ&source=gbs_api",
+  "canonicalVolumeLink": "https://market.android.com/details?id=book-FLEHngEACAAJ"
+ },
+ "saleInfo": {
+  "country": "US",
+  "saleability": "NOT_FOR_SALE",
+  "isEbook": false
+ },
+ "accessInfo": {
+  "country": "US",
+  "viewability": "NO_PAGES",
+  "embeddable": false,
+  "publicDomain": false,
+  "textToSpeechPermission": "ALLOWED",
+  "epub": {
+   "isAvailable": false
+  },
+  "pdf": {
+   "isAvailable": false
+  },
+  "webReaderLink": "http://play.google.com/books/reader?id=FLEHngEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+  "accessViewStatus": "NONE",
+  "quoteSharingAllowed": false
+ }
+},
+  {
+ "kind": "books#volume",
+ "id": "Mpz3rQEACAAJ",
+ "etag": "GYMFRSVFZ/M",
+ "selfLink": "https://www.googleapis.com/books/v1/volumes/Mpz3rQEACAAJ",
+ "volumeInfo": {
+  "title": "Mushoku Tensei: Jobless Reincarnation",
+  "authors": [
+   "Rifujin na Magonote"
+  ],
+  "publisher": "Seven Seas",
+  "publishedDate": "2015-11-24",
+  "description": "\u003cp\u003eA SECOND CHANCE IN A NEW WORLD!\u003c/p\u003e\u003cp\u003eAn unemployed otaku has just reached the lowest point in his life. He wants nothing more than the ability to start over, but just as he thinks it may be possible...he gets hit by a truck and dies! Shockingly, he finds himself reborn into an infant’s body in a strange new world of swords and magic.\u003c/p\u003e\u003cp\u003eHis identity now is Rudeus Greyrat, yet he still retains the memories of his previous life. Reborn into a new family, Rudeus makes use of his past experiences to forge ahead in this fantasy world as a true prodigy—gifted with maturity beyond his years and a natural born talent for magic. With swords instead of chopsticks, and spell books instead of the internet, can Rudeus redeem himself in this wondrous yet dangerous land?\u003c/p\u003e",
+  "industryIdentifiers": [
+   {
+    "type": "ISBN_10",
+    "identifier": "1626922357"
+   },
+   {
+    "type": "ISBN_13",
+    "identifier": "9781626922358"
+   }
+  ],
+  "readingModes": {
+   "text": false,
+   "image": false
+  },
+  "pageCount": 164,
+  "printedPageCount": 164,
+  "dimensions": {
+   "height": "18.10 cm",
+   "width": "12.80 cm",
+   "thickness": "1.50 cm"
+  },
+  "printType": "BOOK",
+  "categories": [
+   "Comics & Graphic Novels / Manga / Fantasy",
+   "Comics & Graphic Novels / Manga / General"
+  ],
+  "maturityRating": "NOT_MATURE",
+  "allowAnonLogging": false,
+  "contentVersion": "preview-1.0.0",
+  "panelizationSummary": {
+   "containsEpubBubbles": false,
+   "containsImageBubbles": false
+  },
+  "imageLinks": {
+   "smallThumbnail": "http://books.google.com/books/content?id=Mpz3rQEACAAJ&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE737hkC55AUtGkcDAVNCZ9Baz1HgwzSLiqJdCTQ64DJylq_PXjEdGCF0nFIP_d87Q98dyfqvUrm-uyu9H4aMaU62b7abYC8F-ijS1pLAuJFy7lXUmal89QhSpwULpUveA4KuJB41&source=gbs_api",
+   "thumbnail": "http://books.google.com/books/content?id=Mpz3rQEACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72b1CjjcLEcx9rpruNB7Uc3yFvtZ7ZnvC_pSCDlaX57P9FTmG3QukBTV8C4N0LmV-3fSVs8evRcKjRr0Qs4v31MUVZ55bHZdZhdsl2hB3cKVFFxWnnXggpqj0RAZnswkEZCThfu&source=gbs_api"
+  },
+  "language": "en",
+  "previewLink": "http://books.google.com/books?id=Mpz3rQEACAAJ&hl=&source=gbs_api",
+  "infoLink": "https://play.google.com/store/books/details?id=Mpz3rQEACAAJ&source=gbs_api",
+  "canonicalVolumeLink": "https://market.android.com/details?id=book-Mpz3rQEACAAJ"
+ },
+ "saleInfo": {
+  "country": "US",
+  "saleability": "NOT_FOR_SALE",
+  "isEbook": false
+ },
+ "accessInfo": {
+  "country": "US",
+  "viewability": "NO_PAGES",
+  "embeddable": false,
+  "publicDomain": false,
+  "textToSpeechPermission": "ALLOWED",
+  "epub": {
+   "isAvailable": false
+  },
+  "pdf": {
+   "isAvailable": false
+  },
+  "webReaderLink": "http://play.google.com/books/reader?id=Mpz3rQEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+  "accessViewStatus": "NONE",
+  "quoteSharingAllowed": false
+ }
+}
+]
+}
+;
+        console.log(json2);
+        
+        $("#shelf").text(json.title); 
+		
+        resultHTML="";
+		for (i in json2.items)
+        {
+			var booktitle=json2.items[i].volumeInfo.title;
+            var bookid=json2.items[i].id;
+		    var cover=json2.items[i].volumeInfo.imageLinks.smallThumbnail;
+
+            resultHTML+="<div class='bookdiv'>";
+            resultHTML+="<img src='"+cover+"' style='float: left' />";
+            resultHTML+="<a href='bookinfo.php?id="+bookid+"'>"+booktitle+"</a>";
+            resultHTML+="</div>";;
+        }
+        $("#results").html(resultHTML); 
+        $(".bookdiv").css("width", "300px"); 
+
+    });
+</script>
+
+</body>
+</html>
