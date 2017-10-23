@@ -139,7 +139,7 @@ Value = document.getElementById('searchterm').value
       	jsontext = xhttp.responseText;
 		var json = JSON.parse(jsontext);
         console.log(json);
-		var total="KSU Bookshelf";
+		var total="Bookshelf";
         $("#display").text(total); 
 	
 		var resultHTML="";
@@ -195,7 +195,7 @@ Value = document.getElementById('searchterm').value
 		document.getElementById("modal").innerHTML = modalHTML;
     }
   }
-  xhttp.open("GET", "https://www.googleapis.com/books/v1/users/117133542904398879136/bookshelves/1001/volumes", true);
+  xhttp.open("GET", "https://www.googleapis.com/books/v1/users/117950082300354916875/bookshelves/", true);
   xhttp.send();
 }
 
