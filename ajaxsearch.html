@@ -70,7 +70,7 @@ Value = document.getElementById('searchterm').value
       	jsontext = xhttp.responseText;
 		var json = JSON.parse(jsontext);
         console.log(json);
-		var total="Search term: " + Value + "     ||     Page: 1";
+		var total="Results: " + Value + "     |     Page: 1";
         $("#display").text(total); 
 	
 		var resultHTML="";
