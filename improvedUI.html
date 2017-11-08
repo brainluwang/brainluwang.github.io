@@ -123,7 +123,7 @@ div.row {
 
      function searchBooks(servicePoint)
      {
-         $("#booklist").html("Searching ..."+"<img src='http://vignette1.wikia.nocookie.net/wikiality/images/7/70/ProgressBar.gif/revision/latest?cb=20070406024457'>");
+         $("#booklist").html("Searching ..."+"<img src='https://www.downgraf.com/wp-content/uploads/2014/09/14-loadingbar.gif'>");
          $.getJSON(servicePoint, function (jsonData)
          {
             $("#booklist").html("");
@@ -141,7 +141,7 @@ div.row {
 
      function getBookDetails(bookid, div)
      {
-         $("#bookdetails").html("Working ..."+"<img src='http://vignette1.wikia.nocookie.net/wikiality/images/7/70/ProgressBar.gif/revision/latest?cb=20070406024457'>");
+         $("#bookdetails").html("Working ..."+"<img src='https://www.downgraf.com/wp-content/uploads/2014/09/14-loadingbar.gif'>");
          //we can use AJAX here because this service provider allows cross origin request
 		 $.getJSON("https://www.googleapis.com/books/v1/volumes/" + bookid, function (jsonData)
          {
@@ -156,7 +156,7 @@ div.row {
 </head>
 
 <body>
-	<h1>Book search from Google Books</h1>
+
 		<div id="maincontent">
 		<div id="booklist"></div>
 </body>
