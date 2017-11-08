@@ -12,49 +12,67 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 div.row {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    	margin-top: 100px;
+    	margin-bottom: 100px;
+	}
+#maincontent {
+	margin-top:120px;
+	}
+.booklistitem {
+	border: thin solid gray;
+	background-color: #F2FFE5;
+	margin:1px;
+	}
+.booklistitemheader
+	{
+	cursor: pointer;
+	}
+.booklistitemheader:hover
+	{	
+	background-color: #8CFF1A;	
+	}
+.book
+	{	
+	border: thin solid #66ddee; 
+	padding: 10px;
+	margin:10px;
+	background-color: white;
 	}
 </style>
 
 
-
-
-
-
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="http://www.codesafari.xyz/adv_web/milestone4/ajax.php">Google Books</a></div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
+      <a class="navbar-brand" href="#">Milestone 4</a></div>
     <div class="collapse navbar-collapse" id="defaultNavbar1">
       <ul class="nav navbar-nav">
-        <li><a id="btn2Search" >Book Shelf</a></li>
+	<li><a href="milestone3.html" >Home</a></li>
+        <li><a>Search</a></li>
+        <li><a onclick="loadDoc2()" >Bookshelf</a></li>
       </ul>
   
       <ul class="nav navbar-nav navbar-right">
-    <form class="navbar-form navbar-right" role="search" onsubmit="return false;">
+    <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="text" id="searchTerm"  placeholder="Enter Search" class="form-control">
+          <input type="text" id="searchterm" size=190  name="searchterm" class="form-control" placeholder="Enter the Book Title Here..." on="loadDoc()">
         </div>
-        <button type="button" id="btnSearch" class="btn btn-default" value="Search">Search</button>
+        <button type="button" onclick="loadDoc()" id="search" class="btn btn-default">Submit</button>
       </form>
       </ul>
     </div>
   </div>
 </nav>
-<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="boootstrap.js" type="text/javascript"></script>
 
 
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
 	<script id="booklisttemplate" type="text/template">
 		{{#items}}
@@ -88,7 +106,7 @@ div.row {
 			{{/volumeInfo}}
 		</div>
 	</script>
-	<script type="text/javascript">
+<script type="text/javascript">
      $(document).ready(function ()
      {
          $("#btnSearch").click(function ()
@@ -138,30 +156,149 @@ div.row {
 			$(div).slideToggle();
          });
      }
+
+document.getElementById('searchterm').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+			loadDoc();
+        }
+    });
+var page;
+var navpage;
+function loadDoc() {
+Value = document.getElementById('searchterm').value
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      	jsontext = xhttp.responseText;
+		var json = JSON.parse(jsontext);
+        console.log(json);
+		var total="Results: " + Value + "     |     Page: 1";
+        $("#display").text(total); 
+	
+		var resultHTML="";
+		var modalHTML="";
+		for (i in json.items)
+        {
+			var booktitle="";
+            var bookid="";
+		    var cover="";
+			var description="";
+			var author="";
+			var publisheddate="";
+			var publisher="";
+			var pagecount="";
+			
+			if (json.items[i].volumeInfo.title != null)
+		        booktitle=json.items[i].volumeInfo.title;
+			if (json.items[i].id != null)
+		        bookid=json.items[i].id;
+			if (json.items[i].volumeInfo.imageLinks != null)
+		        cover=json.items[i].volumeInfo.imageLinks.smallThumbnail;
+			if (json.items[i].volumeInfo.imageLinks == null)
+		        cover="book.gif";
+			if (json.items[i].volumeInfo.description != null)
+		        description=json.items[i].volumeInfo.description;
+			if (json.items[i].volumeInfo.authors[0] != null)
+		        author=json.items[i].volumeInfo.authors[0];
+			if (json.items[i].volumeInfo.publisher != null)
+		        publisher=json.items[i].volumeInfo.publisher;
+			if (json.items[i].volumeInfo.publishedDate != null)
+		        publisheddate=json.items[i].volumeInfo.publishedDate;
+			if (json.items[i].volumeInfo.pageCount != null)
+		        pagecount=json.items[i].volumeInfo.pageCount;
+			
+			resultHTML+="<div class='row' style='background-color:#BE9FE0; padding:2% 0 2% 0; border-top:5px solid #8400CC; border-bottom: 5px solid purple;'>"; 
+            resultHTML+="<div class='col-sm-4'>";
+            resultHTML+="<img src='"+cover+"' style='float: left, width:150px;height:300px'/>";
+			resultHTML+="</div>"
+			resultHTML+="<div class='col-sm-8'>";;
+            resultHTML+="<a data-toggle='modal' data-target='#"+bookid+"'><h3>" + booktitle + "</h3>	</a>";
+ 
+			resultHTML+="<p>"+description+"</p>";
+            resultHTML+="</div>";
+			resultHTML+="</div>";
+			
+			modalHTML+="<div class='modal fade' id="+bookid+" role='dialog'> <div class='modal-dialog'> <div class='modal-dialog'></div></div><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button><h4 class='modal-title'>"+booktitle+"</h4></div><div class='modal-body'><div class='row'><div class='col-sm-4'><img src='"+cover+"' style='float: left, width:150px;height:300px'/></div><div class='col-sm-8'><p><b>Author: </b>" + author + " <br><br><b>Description: </b>" + description + " <br><br><b>Publisher: </b>"+publisher+"<br><br><b>Published Date: </b>"+publisheddate+"<br><br><b>Page Count:  </b>"+pagecount+"</p></div></div></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div>";
+		
+		 
+        }
+			resultHTML+= "<div class='row'><div class='col-sm-4'></div><div class='col-sm-8'><button onclick='page=0, navpage=1, loadDoc3(), document.documentElement.scrollTop = 0'>1</button>&nbsp<button onclick='page=10, navpage=2, loadDoc3(), document.documentElement.scrollTop = 0'>2</button>&nbsp<button onclick='page=20, navpage=3, loadDoc3(), document.documentElement.scrollTop = 0'>3</button>&nbsp<button onclick='page=30, navpage=4, loadDoc3(), document.documentElement.scrollTop = 0'>4</button>&nbsp<button onclick='page=40, navpage=5, loadDoc3(), document.documentElement.scrollTop = 0'>5</button></div></div>";
+		document.getElementById("demo").innerHTML = resultHTML; 
+		document.getElementById("modal").innerHTML = modalHTML;
+    }
+  }
+  xhttp.open("GET", "https://www.googleapis.com/books/v1/volumes?q="+Value+"&startIndex=0&maxResults=10", true);
+  xhttp.send();
+}
+function loadDoc2() {
+Value = document.getElementById('searchterm').value
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      	jsontext = xhttp.responseText;
+		var json = JSON.parse(jsontext);
+        console.log(json);
+		var total="Bookshelf";
+        $("#display").text(total); 
+	
+		var resultHTML="";
+		var modalHTML="";
+		for (i in json.items)
+        {
+			var booktitle="";
+            var bookid="";
+		    var cover="";
+			var description="";
+			var author="";
+			var publisheddate="";
+			var publisher="";
+			var pagecount="";
+			
+			if (json.items[i].volumeInfo.title != null)
+		        booktitle=json.items[i].volumeInfo.title;
+			if (json.items[i].id != null)
+		        bookid=json.items[i].id;
+			if (json.items[i].volumeInfo.imageLinks != null)
+		        cover=json.items[i].volumeInfo.imageLinks.smallThumbnail;
+			if (json.items[i].volumeInfo.imageLinks == null)
+		        cover="book.gif";
+			if (json.items[i].volumeInfo.description != null)
+		        description=json.items[i].volumeInfo.description;
+			if (json.items[i].volumeInfo.authors[0] != null)
+		        author=json.items[i].volumeInfo.authors[0];
+			if (json.items[i].volumeInfo.publisher != null)
+		        publisher=json.items[i].volumeInfo.publisher;
+			if (json.items[i].volumeInfo.publishedDate != null)
+		        publisheddate=json.items[i].volumeInfo.publishedDate;
+			if (json.items[i].volumeInfo.pageCount != null)
+		        pagecount=json.items[i].volumeInfo.pageCount;
+			
+			resultHTML+="<div class='row' style='background-color:#BE9FE0; padding:2% 0 2% 0; border-top:5px solid #9900CC; border-bottom: 5px solid purple;'>"; 
+            resultHTML+="<div class='col-sm-4'>";
+            resultHTML+="<img src='"+cover+"' style='float: left, width:150px;height:300px'/>";
+			resultHTML+="</div>"
+			resultHTML+="<div class='col-sm-8'>";;
+            resultHTML+="<a data-toggle='modal' data-target='#"+bookid+"'><h3>" + booktitle + "</h3>	</a>";
+ 
+			resultHTML+="<p>"+description+"</p>";
+            resultHTML+="</div>";
+			resultHTML+="</div>";
+			
+			modalHTML+="<div class='modal fade' id="+bookid+" role='dialog'> <div class='modal-dialog'> <div class='modal-dialog'></div></div><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button><h4 class='modal-title'>"+booktitle+"</h4></div><div class='modal-body'><div class='row'><div class='col-sm-4'><img src='"+cover+"' style='float: left, width:150px;height:300px'/></div><div class='col-sm-8'><p><b>Author: </b>" + author + " <br><br><b>Description: </b>" + description + " <br><br><b>Publisher: </b>"+publisher+"<br><br><b>Published Date: </b>"+publisheddate+"<br><br><b>Page Count:  </b>"+pagecount+"</p></div></div></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div>";
+		
+		 
+        }
+		document.getElementById("demo").innerHTML = resultHTML; 
+		document.getElementById("modal").innerHTML = modalHTML;
+    }
+  }
+  xhttp.open("GET", "https://www.googleapis.com/books/v1/users/117950082300354916875/bookshelves/1001/volumes", true);
+  xhttp.send();
+}
 </script>
 <style>
-	#maincontent
-	{
-		margin-top:120px;
-	}
-    .booklistitem
-	{
-		border: thin solid gray;
-		background-color: #F2FFE5;
-		margin:1px;
-	}
-	.booklistitemheader
-	{
-		cursor: pointer;
-	}
-	.booklistitemheader:hover
-	{		background-color: #8CFF1A;	}
-	.book
-	{	border: thin solid #66ddee; 
-		padding: 10px;
-		margin:10px;
-		background-color: white;
-	}
+
 </style>
 </head>
 
