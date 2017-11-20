@@ -1,26 +1,25 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <title>Movies Database</title>
-    <link rel="stylesheet" type="text/css" href="/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
-    <script id="movielisttemplate" type="text/template">
+<meta charset="utf-8">
+<title>Movies Database</title>
+<link rel="stylesheet" type="text/css" href="/normalize.css">
+<link rel="stylesheet" type="text/css" href="/style.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
+<script id="movielisttemplate" type="text/template">
         {{#results}}
-		<div class='movielistitem' id="{{id}}">
+	  <div class='movielistitem' id="{{id}}">
 			<div class="movielistitemheader" data-movieid="{{id}}">
                 <img class='thumbnail' src='https://image.tmdb.org/t/p/original{{poster_path}}'/>
                 <div class='card'>
                     <h2 style='text-align: center'>{{title}}</h2>
                     <h4 style='text-align: center'>Overview</h4>
-		    		<p style='text-align: center'>{{overview}}</p>
+		      <p style='text-align: center'>{{overview}}</p>
                 </div>
-            </div>
-			<div class='moviedetails' style='display:none'></div>
-		</div>
+          </div>
+	  <div class='moviedetails' style='display:none'></div>
+	  </div>
         {{/results}}
 	</script>
     <script id="moviedetailstemplate" type="text/template">
@@ -59,16 +58,6 @@
 			<div style="clear:both"></div>
 		</div>
 	</script>
-
-    <!--
-    <script id="casttemplate" type="text/template">
-        <div class="flex" id="cast-flex">
-            {{#cast}}
-            <p>{{name}}</p>
-            {{/cast}}
-        </div>
-    </script>
-    -->
 
     <script type="text/javascript">
      $(document).ready(function ()
@@ -148,14 +137,6 @@
             var url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + api_key + "&language=en-US&page=1";
             searchMovie(url);
         });
-
-        /*$("#castBtn").click(function ()
-         {
-            $("#cast").html("");
-            var url = "https://api.themoviedb.org/3/movie/5559/credits?api_key=3d3b15dd319167f21006071747096bbe";
-            getCast(url);
-        });*/
-
      });
 
      function searchMovie(servicePoint)
@@ -163,25 +144,25 @@
 
          $.getJSON(servicePoint, function (jsonData)
          {
-			var template = $('#movielisttemplate').html();
-			var html = Mustache.render(template, jsonData);
-            $("#movielist").append(html);
-			if ($("#movielist").attr("layout")=="List") {
-				$(".movielistitem").css("width", "100%");
-                $(".thumbnail").css("width", "20%").css("height", "20%");
-                $(".card").show();
-            }
-			else {
-				$(".movielistitem").css("width", "23%");
-                $(".thumbnail").css("width", "100%").css("height", "100%");
-                $(".card").hide();
-            }
-             $(".movielistitemheader").on('click', function () 
-			 { 
-				div=$(this).next();
-				getmoviedetails($(this).attr("data-movieid"), div);
-			 });
-         });
+	   var template = $('#movielisttemplate').html();
+	   var html = Mustache.render(template, jsonData);
+           $("#movielist").append(html);
+		if ($("#movielist").attr("layout")=="List") {
+			$(".movielistitem").css("width", "100%");
+                	$(".thumbnail").css("width", "20%").css("height", "20%");
+                	$(".card").show();
+            	}
+		else {
+			$(".movielistitem").css("width", "23%");
+                	$(".thumbnail").css("width", "100%").css("height", "100%");
+                	$(".card").hide();
+            	}
+           $(".movielistitemheader").on('click', function () 
+	   { 
+		div=$(this).next();
+		getmoviedetails($(this).attr("data-movieid"), div);
+	   });
+        });
      }
 
      function getmoviedetails(movieid, div)
@@ -202,19 +183,6 @@
 
          });
      }
-
-     /*function getCast(movieid)
-     {
-         $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/credits?api_key=3d3b15dd319167f21006071747096bbe"), function (jsonData)
-         {
-            $("#cast").html("");
-            var template = $('#casttemplate').html();
-            var html = Mustache.render(template, jsonData);
-            $("#cast").html(html);
-            $("#cast").fadeIn();
-         }
-         
-     }*/
 </script>
 
 <script>
@@ -222,20 +190,20 @@ $(function(){
 	$("#grid").click(function (){
 		$(".movielistitem").css("width", "23%").css("flex-direction", "row");
 		$("#movielist").attr("layout","Grid");
-        $(".card").hide();
-        $(".thumbnail").css("width", "100%").css("height", "100%");
+        	$(".card").hide();
+        	$(".thumbnail").css("width", "100%").css("height", "100%");
 	});
 	
 	$("#list").click(function (){
 		$(".movielistitem").css("width", "100%").css("flex-direction", "column");
 		$("#movielist").attr("layout","List");
-        $(".card").show();
-        $(".thumbnail").css("width", "20%").css("height", "20%");
+        	$(".card").show();
+        	$(".thumbnail").css("width", "20%").css("height", "20%");
 	});
 });
 </script>
 
-    <style type="text/css">
+<style type="text/css">
         #header {
             background: #cd201f;
             color: #fff;
@@ -388,12 +356,12 @@ $(function(){
             width: 32%;
             text-align: center;
         }
-    </style>
+</style>
 </head>
 
 <body>
     <div id="header">
-        <h1 style="text-shadow: 0 1px 5px #555;">Term Project</h1>
+        <h1 style="text-shadow: 0 1px 5px #555;">Movie Database</h1>
     </div>
     <div id="navigation">
         <div class="line" id="pages">
